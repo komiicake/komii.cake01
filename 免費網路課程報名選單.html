@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>免費長照網路積分課程選單 | 請選擇您要報名的課程</title>
+<style>
+  :root {
+    --bg: #EFF3F0;
+    --card-bg: #FFFFFF;
+    --ink: #2B2B26;
+    --ink-soft: #5B5B52;
+    --teal: #2C5F55;
+    --teal-dark: #1F473F;
+    --ochre: #C98A2C;
+    --line: #DAE0DA;
+    --live: #3E7A4E;
+    --date: #2C5F55;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--teal);
+  }
+
+  header .eyebrow {
+    font-size: 16px;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 28px;
+    margin: 0 0 10px;
+    color: var(--teal-dark);
+    font-weight: 900;
+  }
+
+  header p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .course-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 18px 18px 0;
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    box-shadow: 0 1px 3px rgba(31,71,63,0.06);
+  }
+
+  .badge {
+    flex: 0 0 72px;
+    border-radius: 14px 0 0 14px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    line-height: 1.3;
+    text-align: center;
+    padding: 6px;
+  }
+
+  .badge.live { background: var(--ochre); font-size: 17px; }
+  .badge.date { background: var(--date); }
+  .badge.date .mm-dd { font-size: 19px; }
+  .badge.date .yy { font-size: 12px; opacity: 0.85; }
+
+  .course-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .course-name {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  .course-meta {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  .course-action {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    padding-right: 4px;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--teal);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    min-height: 48px;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+
+  .btn:hover, .btn:focus-visible {
+    background: var(--teal-dark);
+    outline: 3px solid var(--ochre);
+    outline-offset: 2px;
+  }
+
+  .btn.blue { background: #2C5F8A; }
+  .btn.blue:hover, .btn.blue:focus-visible { background: #1F4666; }
+
+  .btn.green { background: #2E8B57; }
+  .btn.green:hover, .btn.green:focus-visible { background: #22693F; }
+
+  footer {
+    margin-top: 36px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 15px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+
+  @media (max-width: 420px) {
+    .course-card { flex-direction: column; padding: 0; overflow: hidden; }
+    .badge { flex-direction: row; border-radius: 14px 14px 0 0; padding: 8px; gap: 8px; }
+    .course-info { padding: 14px 16px 4px; }
+    .course-action { padding: 0 16px 16px; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">課程總覽</div>
+    <h1>免費長照網路積分課程選單</h1>
+    <p>點選課程右側的按鈕即可前往報名或觀看課程</p>
+  </header>
+
+  <div class="course-list">
+
+    <div class="course-card">
+      <div class="badge live">已開課</div>
+      <div class="course-info">
+        <div class="course-name">面對個案臨終手足無措?長照人員的哀傷調適課</div>
+        <div class="course-meta">網路積分・將於 115.10.12 下架</div>
+      </div>
+      <div class="course-action"><a class="btn blue" href="https://course.wacare.live/course/25533588139310/main?associationId=14349721209120&amp;categoryId=2573402601949&amp;openExternalBrowser=1&amp;utm_campaign=LTCLIVE0807&amp;utm_medium=post&amp;utm_source=LineGroup" target="_blank" rel="noopener">前往上課</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="badge live">已開課</div>
+      <div class="course-info">
+        <div class="course-name">長照現場的性別敏感度與尊重技巧</div>
+        <div class="course-meta">網路積分・將於 116.01.08 下架</div>
+      </div>
+      <div class="course-action"><a class="btn blue" href="https://course.wacare.live/course/256375769131210/main?associationId=14349721209120&amp;categoryId=2573402601949&amp;openExternalBrowser=1&amp;utm_campaign=LTCLIVE0807&amp;utm_medium=post&amp;utm_source=LineGroup" target="_blank" rel="noopener">前往上課</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="badge live">已開課</div>
+      <div class="course-info">
+        <div class="course-name">學會居家呼吸設備應用與減喘照護</div>
+        <div class="course-meta">網路積分・115.07.24 起</div>
+      </div>
+      <div class="course-action"><a class="btn blue" href="https://course.wacare.live/course/255332947349290/main?associationId=14349721209120&amp;categoryId=2573402601949&amp;openExternalBrowser=1&amp;utm_campaign=LTCLIVE0807&amp;utm_medium=post&amp;utm_source=LineGroup" target="_blank" rel="noopener">前往上課</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="badge date"><div class="mm-dd">08/07</div><div class="yy">115年</div></div>
+      <div class="course-info">
+        <div class="course-name">居家技巧提升舒適度</div>
+        <div class="course-meta">網路積分・19:30–21:00</div>
+      </div>
+      <div class="course-action"><a class="btn green" href="https://course.wacare.live/course/25533323748510/main?associationId=14349721209120&amp;categoryId=2573402601949&amp;openExternalBrowser=1&amp;utm_campaign=LTCLIVE0807&amp;utm_medium=post&amp;utm_source=LineGroup" target="_blank" rel="noopener">立即報名</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="badge date"><div class="mm-dd">08/21</div><div class="yy">115年</div></div>
+      <div class="course-info">
+        <div class="course-name">痰塞、嗆咳問題多?掌握氣切居家照護技巧</div>
+        <div class="course-meta">網路積分・19:30–21:00</div>
+      </div>
+      <div class="course-action"><a class="btn green" href="https://course.wacare.live/course/255333636296290/main?associationId=14349721209120&amp;categoryId=2573402601949&amp;openExternalBrowser=1&amp;utm_campaign=LTCLIVE0807&amp;utm_medium=post&amp;utm_source=LineGroup" target="_blank" rel="noopener">立即報名</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="badge date"><div class="mm-dd">09/04</div><div class="yy">115年</div></div>
+      <div class="course-info">
+        <div class="course-name">芳香療法陪伴末期長輩,提升舒適與情緒穩定</div>
+        <div class="course-meta">網路積分・19:30–21:00</div>
+      </div>
+      <div class="course-action"><a class="btn green" href="https://course.wacare.live/course/255669197174140/main?associationId=14349721209120&amp;categoryId=2573402601949&amp;openExternalBrowser=1&amp;utm_campaign=LTCLIVE0807&amp;utm_medium=post&amp;utm_source=LineGroup" target="_blank" rel="noopener">立即報名</a></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div>如有課程相關問題,歡迎來電洽詢</div>
+  </footer>
+
+</div>
+</body>
+</html>
