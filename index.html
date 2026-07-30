@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>課程報名總覽</title>
+<style>
+  :root {
+    --bg: #EFF3F0;
+    --card-bg: #FFFFFF;
+    --ink: #2B2B26;
+    --ink-soft: #5B5B52;
+    --teal: #2C5F55;
+    --teal-dark: #1F473F;
+    --ochre: #C98A2C;
+    --line: #DAE0DA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--teal);
+  }
+  header h1 {
+    font-size: 28px;
+    margin: 0 0 10px;
+    color: var(--teal-dark);
+    font-weight: 900;
+  }
+  header p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .menu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    box-shadow: 0 1px 3px rgba(31,71,63,0.06);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .menu-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(31,71,63,0.12);
+  }
+  .menu-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--teal-dark);
+    margin-bottom: 6px;
+  }
+  .menu-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .menu-arrow {
+    float: right;
+    color: var(--ochre);
+    font-weight: 900;
+    font-size: 20px;
+  }
+  footer {
+    margin-top: 36px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 15px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>課程報名總覽</h1>
+    <p>請選擇您要查看的課程分類</p>
+  </header>
+
+  <div class="menu-list">
+    <a class="menu-card" href="cpr-aed.html">
+      <span class="menu-arrow">›</span>
+      <div class="menu-name">(CPR+AED)課程</div>
+      <div class="menu-desc">實體急救訓練課程報名資訊</div>
+    </a>
+
+    <a class="menu-card" href="free-courses.html">
+      <span class="menu-arrow">›</span>
+      <div class="menu-name">免費長照網路積分課程</div>
+      <div class="menu-desc">線上直播與隨選課程報名選單</div>
+    </a>
+  </div>
+
+  <footer>
+    <div>如有課程相關問題,歡迎來電洽詢</div>
+  </footer>
+</div>
+</body>
+</html>
