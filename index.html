@@ -90,9 +90,47 @@
     border-top: 1px solid var(--line);
     padding-top: 20px;
   }
+
+  /* ---------- 浮水印（滿版鎖定版）---------- */
+  .watermark {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99999;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzODAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzgwIDIwMCI+Cjx0ZXh0IHg9IjE5MC4wIiB5PSIxMDAuMCIgZm9udC1mYW1pbHk9Ik5vdG8gU2FucyBUQywgUGluZ0ZhbmcgVEMsIE1pY3Jvc29mdCBKaGVuZ0hlaSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgtMjggMTkwLjAgMTAwLjApIj7oh7rkuK3luILnp4Hnq4vmib/mganlsYXlrrbplbfnhafmqZ/mp4s8L3RleHQ+Cjwvc3ZnPg==");
+    background-repeat: repeat;
+    background-position: 0 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @media print {
+    .watermark { display: block !important; position: fixed; }
+  }
 </style>
 </head>
 <body>
+  <div class="watermark" aria-hidden="true"></div>
+  <script>
+  (function(){
+    function ensureWatermark(){
+      if(!document.querySelector('.watermark')){
+        var wm = document.createElement('div');
+        wm.className = 'watermark';
+        wm.setAttribute('aria-hidden', 'true');
+        document.body.insertBefore(wm, document.body.firstChild);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', ensureWatermark);
+    if (document.body) {
+      var observer = new MutationObserver(ensureWatermark);
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+    }
+    document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  })();
+  </script>
+
 <div class="wrap">
   <header>
     <h1>免費長照繼續教育課程與CPR課程總攬</h1>
