@@ -63,6 +63,20 @@
     margin: 0;
   }
 
+  header .header-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ochre);
+    text-decoration: underline;
+  }
+
+  header .header-link:hover,
+  header .header-link:focus-visible {
+    color: #A8721E;
+  }
+
   .course-list {
     display: flex;
     flex-direction: column;
@@ -220,6 +234,7 @@
     <div class="eyebrow">課程總覽</div>
     <h1>免費長照網路積分課程選單</h1>
     <p>點選課程右側的按鈕即可前往報名或觀看課程</p>
+    <p><a class="header-link" href="https://ltcpap.mohw.gov.tw/molc/eg999/index" target="_blank" rel="noopener">查詢長照人員繼續教育積分</a></p>
   </header>
 
   <div class="course-list">

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>免費長照繼續教育課程與CPR課程總攬</title>
+<title>長期照顧專業人員數位學習平台</title>
 <style>
   :root {
     --bg: #EFF3F0;
@@ -25,63 +25,56 @@
     -webkit-font-smoothing: antialiased;
   }
   .wrap {
-    max-width: 640px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 40px 20px 60px;
+    padding: 28px 20px 60px;
   }
   header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     padding-bottom: 20px;
     border-bottom: 3px solid var(--teal);
   }
+  header .eyebrow {
+    font-size: 16px;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
   header h1 {
-    font-size: 28px;
-    margin: 0 0 10px;
+    font-size: 24px;
+    margin: 0 0 12px;
     color: var(--teal-dark);
     font-weight: 900;
   }
-  header p {
-    font-size: 16px;
-    color: var(--ink-soft);
-    margin: 0;
+  header .header-link {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ochre);
+    text-decoration: underline;
   }
-  .menu-list {
+  header .header-link:hover,
+  header .header-link:focus-visible {
+    color: #A8721E;
+  }
+
+  .pdf-panel {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
-  .menu-card {
-    background: var(--card-bg);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 24px;
-    text-decoration: none;
-    color: var(--ink);
+  .pdf-panel .pdf-page {
+    width: 100%;
+    height: auto;
     display: block;
+    border: 1px solid var(--line);
+    border-radius: 10px;
     box-shadow: 0 1px 3px rgba(31,71,63,0.06);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: var(--card-bg);
   }
-  .menu-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(31,71,63,0.12);
-  }
-  .menu-name {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--teal-dark);
-    margin-bottom: 6px;
-  }
-  .menu-desc {
-    font-size: 15px;
-    color: var(--ink-soft);
-  }
-  .menu-arrow {
-    float: right;
-    color: var(--ochre);
-    font-weight: 900;
-    font-size: 20px;
-  }
+
   footer {
     margin-top: 36px;
     text-align: center;
@@ -132,31 +125,17 @@
   </script>
 
 <div class="wrap">
+
   <header>
-    <h1>免費長照繼續教育課程與CPR課程總攬</h1>
-    <p>請選擇您要查看的課程分類</p>
+    <a class="header-link" href="https://www.ltc-learning.org/mooc/index.php" target="_blank" rel="noopener">長期照顧專業人員數位學習平台</a>
   </header>
 
-  <div class="menu-list">
-    <a class="menu-card" href="cpr-aed.html">
-      <span class="menu-arrow">›</span>
-      <div class="menu-name">(CPR+AED)課程</div>
-    </a>
-
-    <a class="menu-card" href="free-courses.html">
-      <span class="menu-arrow">›</span>
-      <div class="menu-name">免費長照網路積分課程</div>
-    </a>
-
-    <a class="menu-card" href="ltc-platform.html">
-      <span class="menu-arrow">›</span>
-      <div class="menu-name">長期照顧專業人員數位學習平台</div>
-    </a>
-
-    <a class="menu-card" href="主動運動.html">
-      <span class="menu-arrow">›</span>
-      <div class="menu-name">主動運動｜手部・下肢 動起來</div>
-    </a>
+  <div class="pdf-panel">
+    <img src="pdf-pages/page-1.png" alt="各類課程及積分採計規範 第1頁" class="pdf-page">
+    <img src="pdf-pages/page-2.png" alt="各類課程及積分採計規範 第2頁" class="pdf-page">
+    <img src="pdf-pages/page-3.png" alt="各類課程及積分採計規範 第3頁" class="pdf-page">
+    <img src="pdf-pages/page-4.png" alt="各類課程及積分採計規範 第4頁" class="pdf-page">
+    <img src="pdf-pages/page-5.png" alt="各類課程及積分採計規範 第5頁" class="pdf-page">
   </div>
 
   <footer>
@@ -164,6 +143,7 @@
     <div>公司:承恩居家長照機構</div>
     <div>電話:04-24962099</div>
   </footer>
+
 </div>
 </body>
 </html>

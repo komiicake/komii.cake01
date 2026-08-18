@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主動運動｜手部 · 下肢 動起來</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5EEDC;
+    --plum:#4A2545;
+    --plum-deep:#301630;
+    --mustard:#E2A73E;
+    --line: rgba(46,32,24,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans TC', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  /* ---------- 頂部總覽 ---------- */
+  .top-breadcrumb{
+    max-width:1040px;
+    margin:0 auto;
+    padding:28px 24px 0;
+    font-size:15px;
+    color:var(--plum);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .top-breadcrumb .sep{opacity:.45;}
+  .top-breadcrumb .current{
+    background:var(--plum);
+    color:#fff;
+    padding:2px 10px;
+    border-radius:999px;
+    font-weight:700;
+  }
+  .top-title{
+    max-width:1040px;
+    margin:14px auto 0;
+    padding:0 24px;
+    font-family:'Fredoka', 'Noto Sans TC', sans-serif;
+    font-weight:700;
+    font-size:clamp(30px, 5vw, 44px);
+    color:var(--plum-deep);
+  }
+  .top-desc{
+    max-width:1040px;
+    margin:10px auto 0;
+    padding:0 24px;
+    font-size:17px;
+    line-height:1.8;
+    color:#4a382c;
+    max-width:640px;
+  }
+
+  /* ---------- 分類跳轉標籤（sticky）---------- */
+  .cat-nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(245,238,220,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--line);
+    margin-top:26px;
+  }
+  .cat-nav-inner{
+    max-width:1040px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .cat-nav a{
+    text-decoration:none;
+    font-weight:700;
+    font-size:15px;
+    padding:9px 20px;
+    border-radius:999px;
+    border:2px solid transparent;
+    transition:transform .18s ease, border-color .18s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .cat-nav a:hover{transform:translateY(-2px);}
+  .cat-nav a.hand{ background:#FBEBD8; color:#C1443C; }
+  .cat-nav a.hand:hover{ border-color:#C1443C; }
+  .cat-nav a.leg{ background:#DEEDE7; color:#2F6F63; }
+  .cat-nav a.leg:hover{ border-color:#2F6F63; }
+
+  /* ============================================================
+     共用：分類區塊（用 CSS 變數切換色系）
+  ============================================================ */
+  .category-section{
+    --accent:#C1443C;
+    --accent-soft:#F5DAD6;
+    --accent-deep:#8a3129;
+    scroll-margin-top:70px;
+  }
+  .category-section.leg-theme{
+    --accent:#2F6F63;
+    --accent-soft:#DCEDE6;
+    --accent-deep:#204d43;
+  }
+  .category-section.arm-theme{
+    --accent:#3B6E93;
+    --accent-soft:#DCE7EF;
+    --accent-deep:#254A63;
+  }
+
+  .section-divider{
+    max-width:1040px;
+    margin:60px auto 0;
+    padding:0 24px;
+  }
+  .section-divider hr{
+    border:none;
+    border-top:2px dashed var(--line);
+  }
+
+  .hero{
+    max-width:1040px;
+    margin:0 auto;
+    padding:40px 24px 10px;
+    position:relative;
+  }
+  .hero-eyebrow{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    color:var(--accent);
+    font-size:16px;
+    letter-spacing:0.08em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .hero-eyebrow .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);opacity:1;}
+    50%{transform:scale(1.5);opacity:.5;}
+  }
+  h2.hero-title{
+    font-family:'Fredoka', 'Noto Sans TC', sans-serif;
+    font-weight:700;
+    font-size:clamp(34px, 6vw, 58px);
+    line-height:1.08;
+    margin:0 0 18px;
+    color:var(--plum-deep);
+  }
+  h2.hero-title .accent{
+    color:var(--accent);
+    position:relative;
+    display:inline-block;
+  }
+  h2.hero-title .accent::after{
+    content:"";
+    position:absolute;
+    left:-2%;
+    right:-2%;
+    bottom:0.06em;
+    height:0.32em;
+    background:var(--mustard);
+    z-index:-1;
+    border-radius:6px;
+    opacity:0.55;
+  }
+  .hero-desc{
+    font-size:18px;
+    line-height:1.85;
+    max-width:640px;
+    color:#4a382c;
+    margin:0 0 8px;
+  }
+  .hero-tags{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px;
+  }
+  .hero-tags span{
+    font-size:14px;
+    font-weight:700;
+    padding:7px 16px;
+    border-radius:999px;
+    border:1.5px solid var(--plum);
+    color:var(--plum);
+    background:rgba(255,255,255,0.4);
+  }
+
+  /* ---------- 節奏線（簽名元素，手部/下肢共用結構）---------- */
+  .rhythm-wrap{
+    max-width:1040px;
+    margin:30px auto 6px;
+    padding:0 24px;
+  }
+  .rhythm-line{
+    width:100%;
+    height:70px;
+    display:block;
+  }
+  .beat-mark{
+    animation:tap 1.8s ease-in-out infinite;
+  }
+  .beat-mark.m2{animation-delay:.2s;}
+  .beat-mark.m3{animation-delay:.4s;}
+  .beat-mark.m4{animation-delay:.6s;}
+  .beat-mark.m5{animation-delay:.8s;}
+  .beat-mark.m6{animation-delay:1.0s;}
+  .beat-mark.m7{animation-delay:1.2s;}
+  @keyframes tap{
+    0%,100%{ transform:translateY(0) scale(1); opacity:.5; }
+    50%{ transform:translateY(-8px) scale(1.06); opacity:1; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .beat-mark,.hero-eyebrow .dot{animation:none !important;}
+  }
+
+  main{
+    max-width:1040px;
+    margin:0 auto;
+    padding:10px 24px 20px;
+  }
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+    margin-top:18px;
+  }
+  @media (max-width: 860px){
+    .card-grid{grid-template-columns:1fr; max-width:520px; margin-left:auto; margin-right:auto;}
+  }
+  .card{
+    background:#FFFDF6;
+    border:2px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    box-shadow: 0 2px 0 var(--line);
+  }
+  .card:hover, .card:focus-within{
+    transform:translateY(-6px) rotate(-0.3deg);
+    box-shadow: 0 18px 30px -14px rgba(46,32,24,0.32);
+    border-color:var(--accent);
+  }
+  .card-number{
+    position:absolute;
+    top:14px; left:14px;
+    z-index:3;
+    background:var(--plum-deep);
+    color:var(--paper);
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    padding:5px 13px;
+    border-radius:999px;
+    letter-spacing:0.03em;
+  }
+  .platform-badge{
+    position:absolute;
+    top:14px; right:14px;
+    z-index:3;
+    background:#fff;
+    font-size:12px;
+    font-weight:700;
+    padding:5px 11px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+  }
+  .platform-badge svg{width:13px;height:13px;}
+  .platform-badge.yt{color:#C1443C;}
+  .platform-badge.fb{color:#1877F2;}
+
+  .thumb-link{
+    display:block;
+    position:relative;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    background:var(--plum-deep);
+  }
+  .thumb-link img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .35s ease;
+  }
+  .card:hover .thumb-link img{transform:scale(1.06);}
+  .thumb-bg{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .illustration{
+    width:64%;
+    height:64%;
+    transition:transform .35s ease;
+  }
+  .card:hover .illustration{transform:scale(1.08);}
+
+  .play-badge{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .play-badge svg.yt-icon{
+    width:60px;height:44px;
+    filter:drop-shadow(0 6px 14px rgba(0,0,0,0.35));
+    transition:transform .2s ease;
+  }
+  .play-badge .circle{
+    width:58px;height:58px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 6px 14px rgba(0,0,0,0.25);
+    transition:transform .2s ease;
+  }
+  .card:hover .play-badge svg.yt-icon,
+  .card:hover .play-badge .circle{transform:scale(1.1);}
+  .play-badge .tri{width:20px;height:20px;}
+
+  .card-body{
+    padding:20px 20px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+  }
+  .card-eyebrow{
+    font-size:13px;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:0.04em;
+  }
+  .card-title{
+    font-size:19px;
+    font-weight:700;
+    line-height:1.5;
+    color:var(--plum-deep);
+    margin:0;
+  }
+  .card-desc{
+    font-size:15px;
+    line-height:1.75;
+    color:#5a4a3c;
+    margin:0;
+    flex:1;
+  }
+  .card-cta{
+    margin-top:6px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    font-size:15px;
+    color:#fff;
+    background:var(--accent);
+    padding:10px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    width:fit-content;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .card-cta:hover{background:var(--accent-deep); transform:translateX(2px);}
+  .card-cta svg{width:16px;height:16px;}
+
+  footer{
+    text-align:center;
+    padding:40px 24px 50px;
+    font-size:13px;
+    color:#8a7a6a;
+  }
+
+
+  /* ---------- 浮水印（滿版鎖定版）---------- */
+  .watermark {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99999;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzODAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzgwIDIwMCI+Cjx0ZXh0IHg9IjE5MC4wIiB5PSIxMDAuMCIgZm9udC1mYW1pbHk9Ik5vdG8gU2FucyBUQywgUGluZ0ZhbmcgVEMsIE1pY3Jvc29mdCBKaGVuZ0hlaSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgtMjggMTkwLjAgMTAwLjApIj7oh7rkuK3luILnp4Hnq4vmib/mganlsYXlrrbplbfnhafmqZ/mp4s8L3RleHQ+Cjwvc3ZnPg==");
+    background-repeat: repeat;
+    background-position: 0 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @media print {
+    .watermark { display: block !important; position: fixed; }
+  }
+</style>
+</head>
+<body>
+  <div class="watermark" aria-hidden="true"></div>
+  <script>
+  (function(){
+    function ensureWatermark(){
+      if(!document.querySelector('.watermark')){
+        var wm = document.createElement('div');
+        wm.className = 'watermark';
+        wm.setAttribute('aria-hidden', 'true');
+        document.body.insertBefore(wm, document.body.firstChild);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', ensureWatermark);
+    if (document.body) {
+      var observer = new MutationObserver(ensureWatermark);
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+    }
+    document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  })();
+  </script>
+
+
+
+  
+  
+  <!-- ===================== 手部運動 ===================== -->
+  <section class="category-section hand-theme" id="hand">
+    <header class="hero">
+      <div class="hero-eyebrow"><span class="dot"></span>手部運動－手指曼波</div>
+    </header>
+
+    
+    <main>
+      <div class="card-grid">
+
+        <!-- 手部卡片 1 -->
+        <article class="card">
+          <span class="card-number">曼波 01</span>
+          <span class="platform-badge yt">
+            <svg viewBox="0 0 24 24" fill="#C1443C"><path d="M21.6 7.2c-.25-1-1-1.7-2-2C17.9 4.7 12 4.7 12 4.7s-5.9 0-7.6.5c-1 .3-1.7 1-2 2C2 8.9 2 12 2 12s0 3.1.4 4.8c.3 1 1 1.7 2 2 1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5c1-.3 1.7-1 2-2 .4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8zM10 15.2V8.8l5.5 3.2-5.5 3.2z"/></svg>
+            YouTube
+          </span>
+          <a class="thumb-link" href="https://www.youtube.com/watch?v=dsr0rF2r4Ww" target="_blank" rel="noopener" aria-label="播放 手指曼波1">
+            <img src="https://img.youtube.com/vi/dsr0rF2r4Ww/hqdefault.jpg" alt="手指曼波1 影片縮圖" loading="lazy">
+            <span class="play-badge">
+              <svg class="yt-icon" viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.9-5-5.7-5.8C55.7 0.5 34 0.5 34 0.5s-21.7 0-26.8 1.4C4.4 2.7 2.3 4.9 1.5 7.7 0 12.9 0 24 0 24s0 11.1 1.5 16.3c.8 2.9 2.9 5 5.7 5.8C12.3 47.5 34 47.5 34 47.5s21.7 0 26.8-1.4c2.8-.8 4.9-2.9 5.7-5.8C68 35.1 68 24 68 24s0-11.1-1.5-16.3z" fill="#C1443C"/><path d="M45 24 27 14v20z" fill="#FFFDF6"/></svg>
+            </span>
+          </a>
+          <div class="card-body">
+            <span class="card-eyebrow">大腦健身房</span>
+            <h3 class="card-title">手指曼波 1：動手活腦，預防失智症</h3>
+            <p class="card-desc">基礎手指節奏動作，簡單好跟，適合作為每日陪伴運動的開場暖身。</p>
+            <a class="card-cta" href="https://www.youtube.com/watch?v=dsr0rF2r4Ww" target="_blank" rel="noopener">
+              立即觀看
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 手部卡片 2 -->
+        <article class="card">
+          <span class="card-number">曼波 02</span>
+          <span class="platform-badge yt">
+            <svg viewBox="0 0 24 24" fill="#C1443C"><path d="M21.6 7.2c-.25-1-1-1.7-2-2C17.9 4.7 12 4.7 12 4.7s-5.9 0-7.6.5c-1 .3-1.7 1-2 2C2 8.9 2 12 2 12s0 3.1.4 4.8c.3 1 1 1.7 2 2 1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5c1-.3 1.7-1 2-2 .4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8zM10 15.2V8.8l5.5 3.2-5.5 3.2z"/></svg>
+            YouTube
+          </span>
+          <a class="thumb-link" href="https://www.youtube.com/watch?v=F69f-jRVU-A&list=PLirB8TWrbm-tk5IDS23u4KUi8q3iroOVF&index=2" target="_blank" rel="noopener" aria-label="播放 手指曼波2">
+            <img src="https://img.youtube.com/vi/F69f-jRVU-A/hqdefault.jpg" alt="手指曼波2 影片縮圖" loading="lazy">
+            <span class="play-badge">
+              <svg class="yt-icon" viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.9-5-5.7-5.8C55.7 0.5 34 0.5 34 0.5s-21.7 0-26.8 1.4C4.4 2.7 2.3 4.9 1.5 7.7 0 12.9 0 24 0 24s0 11.1 1.5 16.3c.8 2.9 2.9 5 5.7 5.8C12.3 47.5 34 47.5 34 47.5s21.7 0 26.8-1.4c2.8-.8 4.9-2.9 5.7-5.8C68 35.1 68 24 68 24s0-11.1-1.5-16.3z" fill="#E2A73E"/><path d="M45 24 27 14v20z" fill="#3A2A1E"/></svg>
+            </span>
+          </a>
+          <div class="card-body">
+            <span class="card-eyebrow">大腦健身房</span>
+            <h3 class="card-title">手指曼波 2：鯉魚歌－動手活腦</h3>
+            <p class="card-desc">搭配輕快的鯉魚歌旋律，一邊唱一邊比手勢，趣味中訓練手部協調。</p>
+            <a class="card-cta" href="https://www.youtube.com/watch?v=F69f-jRVU-A&list=PLirB8TWrbm-tk5IDS23u4KUi8q3iroOVF&index=2" target="_blank" rel="noopener">
+              立即觀看
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 手部卡片 3 -->
+        <article class="card">
+          <span class="card-number">曼波 03</span>
+          <span class="platform-badge yt">
+            <svg viewBox="0 0 24 24" fill="#C1443C"><path d="M21.6 7.2c-.25-1-1-1.7-2-2C17.9 4.7 12 4.7 12 4.7s-5.9 0-7.6.5c-1 .3-1.7 1-2 2C2 8.9 2 12 2 12s0 3.1.4 4.8c.3 1 1 1.7 2 2 1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5c1-.3 1.7-1 2-2 .4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8zM10 15.2V8.8l5.5 3.2-5.5 3.2z"/></svg>
+            YouTube
+          </span>
+          <a class="thumb-link" href="https://www.youtube.com/watch?v=grB2ZBwK1YQ" target="_blank" rel="noopener" aria-label="播放 手指曼波3">
+            <img src="https://img.youtube.com/vi/grB2ZBwK1YQ/hqdefault.jpg" alt="手指曼波3 影片縮圖" loading="lazy">
+            <span class="play-badge">
+              <svg class="yt-icon" viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.9-5-5.7-5.8C55.7 0.5 34 0.5 34 0.5s-21.7 0-26.8 1.4C4.4 2.7 2.3 4.9 1.5 7.7 0 12.9 0 24 0 24s0 11.1 1.5 16.3c.8 2.9 2.9 5 5.7 5.8C12.3 47.5 34 47.5 34 47.5s21.7 0 26.8-1.4c2.8-.8 4.9-2.9 5.7-5.8C68 35.1 68 24 68 24s0-11.1-1.5-16.3z" fill="#2F6F63"/><path d="M45 24 27 14v20z" fill="#FFFDF6"/></svg>
+            </span>
+          </a>
+          <div class="card-body">
+            <span class="card-eyebrow">大腦健身房</span>
+            <h3 class="card-title">手指曼波 3：動手活腦，預防失智症</h3>
+            <p class="card-desc">進階版手指動作組合，重複練習有助強化記憶與手眼協調能力。</p>
+            <a class="card-cta" href="https://www.youtube.com/watch?v=grB2ZBwK1YQ" target="_blank" rel="noopener">
+              立即觀看
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </main>
+  </section>
+
+  <div class="section-divider"><hr></div>
+
+  <!-- ===================== 下肢運動 ===================== -->
+  <section class="category-section leg-theme" id="leg">
+    <header class="hero">
+      <div class="hero-eyebrow"><span class="dot"></span>下肢運動－腿力練習室</div>
+    </header>
+
+    
+    <main>
+      <div class="card-grid">
+
+        <!-- 下肢卡片 1 -->
+        <article class="card">
+          <span class="card-number">腿力 01</span>
+          <span class="platform-badge fb">
+            <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
+            Facebook
+          </span>
+          <a class="thumb-link" href="https://www.facebook.com/reel/2836939996643744" target="_blank" rel="noopener" aria-label="觀看 讓腿越變越有力的5個動作">
+            <div class="thumb-bg" style="background:linear-gradient(135deg,#DCEDE6,#F2E4C6);">
+              <svg class="illustration" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="52" fill="#2F6F63" opacity="0.12"/>
+                <g stroke="#2F6F63" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M45 30 L45 58 L34 92"/>
+                  <path d="M45 58 L60 66 L70 92"/>
+                  <circle cx="45" cy="20" r="8" fill="#2F6F63" stroke="none"/>
+                </g>
+              </svg>
+            </div>
+            <span class="play-badge"><span class="circle"><svg class="tri" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#2F6F63"/></svg></span></span>
+          </a>
+          <div class="card-body">
+            <span class="card-eyebrow">腿力練習室</span>
+            <h3 class="card-title">讓腿越變越有力的 5 個動作</h3>
+            <p class="card-desc">五個循序漸進的動作組合，全面加強大腿與小腿肌力，走路更穩健。</p>
+            <a class="card-cta" href="https://www.facebook.com/reel/2836939996643744" target="_blank" rel="noopener">
+              立即觀看
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 下肢卡片 2 -->
+        <article class="card">
+          <span class="card-number">腿力 02</span>
+          <span class="platform-badge fb">
+            <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
+            Facebook
+          </span>
+          <a class="thumb-link" href="https://www.facebook.com/reel/1855739878429581" target="_blank" rel="noopener" aria-label="觀看 膝蓋大腿肌肉萎縮力量鍛煉">
+            <div class="thumb-bg" style="background:linear-gradient(135deg,#F5DAD6,#F2E4C6);">
+              <svg class="illustration" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="52" fill="#C1443C" opacity="0.12"/>
+                <g stroke="#C1443C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M50 30 L50 60 L38 60 L38 92"/>
+                  <path d="M50 60 L64 60 L70 92"/>
+                  <circle cx="60" cy="60" r="10"/>
+                  <circle cx="50" cy="20" r="8" fill="#C1443C" stroke="none"/>
+                </g>
+              </svg>
+            </div>
+            <span class="play-badge"><span class="circle"><svg class="tri" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#C1443C"/></svg></span></span>
+          </a>
+          <div class="card-body">
+            <span class="card-eyebrow">腿力練習室</span>
+            <h3 class="card-title">膝蓋大腿肌肉萎縮力量鍛煉</h3>
+            <p class="card-desc">針對膝蓋、大腿肌肉萎縮設計的訓練動作，幫助找回肌力與活動能力。</p>
+            <a class="card-cta" href="https://www.facebook.com/reel/1855739878429581" target="_blank" rel="noopener">
+              立即觀看
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 下肢卡片 3 -->
+        <article class="card">
+          <span class="card-number">腿力 03</span>
+          <span class="platform-badge fb">
+            <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
+            Facebook
+          </span>
+          <a class="thumb-link" href="https://www.facebook.com/reel/1046774027845278" target="_blank" rel="noopener" aria-label="觀看 膝蓋最喜歡的三個動作">
+            <div class="thumb-bg" style="background:linear-gradient(135deg,#F3E3C4,#E4EEE8);">
+              <svg class="illustration" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="52" fill="#E2A73E" opacity="0.16"/>
+                <g stroke="#B8842A" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M55 28 L55 55"/>
+                  <path d="M55 55 C 40 60, 40 78, 55 88"/>
+                  <path d="M55 55 C 70 60, 70 78, 55 88"/>
+                  <circle cx="55" cy="18" r="8" fill="#B8842A" stroke="none"/>
+                </g>
+              </svg>
+            </div>
+            <span class="play-badge"><span class="circle"><svg class="tri" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#B8842A"/></svg></span></span>
+          </a>
+          <div class="card-body">
+            <span class="card-eyebrow">腿力練習室</span>
+            <h3 class="card-title">膝蓋最喜歡的三個動作</h3>
+            <p class="card-desc">溫和舒緩膝蓋壓力的三個動作，減輕痠痛不適，同時維持關節活動度。</p>
+            <a class="card-cta" href="https://www.facebook.com/reel/1046774027845278" target="_blank" rel="noopener">
+              立即觀看
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </main>
+  </section>
+
+  <div class="section-divider"><hr></div>
+
+  <!-- ===================== 上肢運動 ===================== -->
+  <section class="category-section arm-theme" id="arm">
+    <header class="hero">
+      <div class="hero-eyebrow"><span class="dot"></span>上肢運動－毛巾操</div>
+    </header>
+
+    <main>
+      <div class="card-grid">
+
+        <!-- 上肢卡片 1 -->
+        <article class="card">
+          <span class="card-number">毛巾操 01</span>
+          <span class="platform-badge yt">
+            <svg viewBox="0 0 24 24" fill="#C1443C"><path d="M21.6 7.2c-.25-1-1-1.7-2-2C17.9 4.7 12 4.7 12 4.7s-5.9 0-7.6.5c-1 .3-1.7 1-2 2C2 8.9 2 12 2 12s0 3.1.4 4.8c.3 1 1 1.7 2 2 1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5c1-.3 1.7-1 2-2 .4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8zM10 15.2V8.8l5.5 3.2-5.5 3.2z"/></svg>
+            YouTube
+          </span>
+          <a class="thumb-link" href="https://www.youtube.com/watch?v=-0jlr5gEIZA" target="_blank" rel="noopener" aria-label="播放 10分鐘長者運動之毛巾操">
+            <img src="https://img.youtube.com/vi/-0jlr5gEIZA/hqdefault.jpg" alt="10分鐘長者運動之毛巾操 影片縮圖" loading="lazy">
+            <span class="play-badge">
+              <svg class="yt-icon" viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.9-5-5.7-5.8C55.7 0.5 34 0.5 34 0.5s-21.7 0-26.8 1.4C4.4 2.7 2.3 4.9 1.5 7.7 0 12.9 0 24 0 24s0 11.1 1.5 16.3c.8 2.9 2.9 5 5.7 5.8C12.3 47.5 34 47.5 34 47.5s21.7 0 26.8-1.4c2.8-.8 4.9-2.9 5.7-5.8C68 35.1 68 24 68 24s0-11.1-1.5-16.3z" fill="#3B6E93"/><path d="M45 24 27 14v20z" fill="#FFFDF6"/></svg>
+            </span>
+          </a>
+          <div class="card-body">
+            <span class="card-eyebrow">毛巾操</span>
+            <h3 class="card-title">10 分鐘長者運動之毛巾操（改善肌肉痠痛）</h3>
+            <p class="card-desc">利用一條毛巾就能完成的上肢伸展操，舒緩肩頸與手臂痠痛，動作溫和好跟上。</p>
+            <a class="card-cta" href="https://www.youtube.com/watch?v=-0jlr5gEIZA" target="_blank" rel="noopener">
+              立即觀看
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 上肢卡片 2 -->
+        <article class="card">
+          <span class="card-number">毛巾操 02</span>
+          <span class="platform-badge yt">
+            <svg viewBox="0 0 24 24" fill="#C1443C"><path d="M21.6 7.2c-.25-1-1-1.7-2-2C17.9 4.7 12 4.7 12 4.7s-5.9 0-7.6.5c-1 .3-1.7 1-2 2C2 8.9 2 12 2 12s0 3.1.4 4.8c.3 1 1 1.7 2 2 1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5c1-.3 1.7-1 2-2 .4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8zM10 15.2V8.8l5.5 3.2-5.5 3.2z"/></svg>
+            YouTube
+          </span>
+          <a class="thumb-link" href="https://www.youtube.com/watch?v=e2l1-C0n134" target="_blank" rel="noopener" aria-label="播放 長者毛巾操">
+            <img src="https://img.youtube.com/vi/e2l1-C0n134/hqdefault.jpg" alt="長者毛巾操 影片縮圖" loading="lazy">
+            <span class="play-badge">
+              <svg class="yt-icon" viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.9-5-5.7-5.8C55.7 0.5 34 0.5 34 0.5s-21.7 0-26.8 1.4C4.4 2.7 2.3 4.9 1.5 7.7 0 12.9 0 24 0 24s0 11.1 1.5 16.3c.8 2.9 2.9 5 5.7 5.8C12.3 47.5 34 47.5 34 47.5s21.7 0 26.8-1.4c2.8-.8 4.9-2.9 5.7-5.8C68 35.1 68 24 68 24s0-11.1-1.5-16.3z" fill="#254A63"/><path d="M45 24 27 14v20z" fill="#FFFDF6"/></svg>
+            </span>
+          </a>
+          <div class="card-body">
+            <span class="card-eyebrow">毛巾操</span>
+            <h3 class="card-title">長者毛巾操</h3>
+            <p class="card-desc">簡易版毛巾操，動作重複、節奏清楚，適合每天固定練習，維持上肢活動度。</p>
+            <a class="card-cta" href="https://www.youtube.com/watch?v=e2l1-C0n134" target="_blank" rel="noopener">
+              立即觀看
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </main>
+  </section>
+
+
+  <footer style="max-width:1040px;margin:60px auto 0;padding:28px 24px 40px;text-align:center;color:#4a382c;font-size:15px;border-top:2px dashed var(--line);">
+    <div>如有課程相關問題,歡迎來電洽詢</div>
+    <div>公司:承恩居家長照機構</div>
+    <div>電話:04-24962099</div>
+  </footer>
+
+</body>
+</html>
