@@ -233,6 +233,63 @@
   })();
   </script>
 
+  <script>
+  (function(){
+    // 自動偵測頁面內容是否有變動,不需要手動修改任何時間或版本號
+    var STORAGE_KEY = "pageContentHash_" + location.pathname;
+
+    function hashString(str){
+      var hash = 0;
+      for (var i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash |= 0;
+      }
+      return hash.toString();
+    }
+
+    function showUpdateToast(){
+      var toast = document.createElement('div');
+      toast.textContent = '內容已更新!';
+      toast.style.cssText = [
+        'position:fixed',
+        'top:20px',
+        'left:50%',
+        'transform:translateX(-50%)',
+        'background:#2C5F55',
+        'color:#fff',
+        'padding:12px 24px',
+        'border-radius:10px',
+        'font-weight:800',
+        'font-size:16px',
+        'font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif',
+        'z-index:100000',
+        'box-shadow:0 4px 14px rgba(0,0,0,0.25)',
+        'opacity:0',
+        'transition:opacity 0.3s ease'
+      ].join(';');
+      document.body.appendChild(toast);
+      requestAnimationFrame(function(){ toast.style.opacity = '1'; });
+      setTimeout(function(){
+        toast.style.opacity = '0';
+        setTimeout(function(){ toast.remove(); }, 300);
+      }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var clone = document.body.cloneNode(true);
+      var toRemove = clone.querySelectorAll('.watermark, script');
+      toRemove.forEach(function(el){ el.remove(); });
+      var currentHash = hashString(clone.innerHTML);
+
+      var previousHash = localStorage.getItem(STORAGE_KEY);
+      if (previousHash && previousHash !== currentHash) {
+        showUpdateToast();
+      }
+      localStorage.setItem(STORAGE_KEY, currentHash);
+    });
+  })();
+  </script>
+
 
 <div class="wrap">
 
