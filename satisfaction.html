@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>居家服務滿意度調查</title>
+<style>
+  :root {
+    --bg: #EFF3F0;
+    --ink: #2B2B26;
+    --ink-soft: #5B5B52;
+    --teal: #2C5F55;
+    --teal-dark: #1F473F;
+    --line: #DAE0DA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+  }
+  .back {
+    display: inline-block;
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    margin-bottom: 12px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--teal);
+  }
+  header h1 {
+    font-size: 24px;
+    margin: 0;
+    color: var(--teal-dark);
+    font-weight: 900;
+  }
+  .form-frame {
+    width: 100%;
+    height: calc(100vh - 170px);
+    min-height: 600px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+  }
+  .fallback {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .fallback a { color: var(--teal-dark); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">‹ 回課程總覽</a>
+
+  <header>
+    <h1>居家服務滿意度調查</h1>
+  </header>
+
+  <!-- 請把下面兩處「1FAIpQLSeOy4BMEZt93sQ9ZUxl3DLUFGkuQiBLDQSzsQFwEnmsTn_biw」換成實際的表單網址 -->
+  <iframe class="form-frame"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeOy4BMEZt93sQ9ZUxl3DLUFGkuQiBLDQSzsQFwEnmsTn_biw/viewform?embedded=true"
+          title="居家服務滿意度調查">
+    載入中…
+  </iframe>
+
+  <div class="fallback">
+    表單沒有顯示時，請
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeOy4BMEZt93sQ9ZUxl3DLUFGkuQiBLDQSzsQFwEnmsTn_biw/viewform">點此直接開啟表單</a>
+  </div>
+</div>
+</body>
+</html>
