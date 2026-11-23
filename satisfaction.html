@@ -41,11 +41,17 @@
     padding-bottom: 12px;
     border-bottom: 3px solid var(--teal);
   }
-  header h1 {
+  header .org {
+    margin: 0 0 4px;
     font-size: 24px;
-    margin: 0;
-    color: var(--teal-dark);
     font-weight: 900;
+    color: var(--teal-dark);
+  }
+  header h1 {
+    font-size: 20px;
+    margin: 0;
+    color: var(--ink);
+    font-weight: 700;
   }
   .form-frame {
     width: 100%;
@@ -62,17 +68,52 @@
     color: var(--ink-soft);
   }
   .fallback a { color: var(--teal-dark); font-weight: 700; }
+  /* ---------- 浮水印（滿版鎖定版）---------- */
+  .watermark {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99999;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzODAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzgwIDIwMCI+Cjx0ZXh0IHg9IjE5MC4wIiB5PSIxMDAuMCIgZm9udC1mYW1pbHk9Ik5vdG8gU2FucyBUQywgUGluZ0ZhbmcgVEMsIE1pY3Jvc29mdCBKaGVuZ0hlaSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgtMjggMTkwLjAgMTAwLjApIj7oh7rkuK3luILnp4Hnq4vmib/mganlsYXlrrbplbfnhafmqZ/mp4s8L3RleHQ+Cjwvc3ZnPg==");
+    background-repeat: repeat;
+    background-position: 0 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @media print {
+    .watermark { display: block !important; position: fixed; }
+  }
 </style>
 </head>
 <body>
+<div class="watermark" aria-hidden="true"></div>
+<script>
+(function(){
+  function ensureWatermark(){
+    if(!document.querySelector('.watermark')){
+      var wm=document.createElement('div');
+      wm.className='watermark';
+      wm.setAttribute('aria-hidden','true');
+      document.body.insertBefore(wm,document.body.firstChild);
+    }
+  }
+  document.addEventListener('DOMContentLoaded',ensureWatermark);
+  if(document.body){
+    new MutationObserver(ensureWatermark).observe(document.documentElement,{childList:true,subtree:true});
+  }
+  document.addEventListener('contextmenu',function(e){ e.preventDefault(); });
+})();
+</script>
 <div class="wrap">
   <a class="back" href="index.html">‹ 回課程總覽</a>
 
   <header>
-    <h1>居家服務滿意度調查</h1>
+    <p class="org">臺中市私立承恩居家長照機構</p>
+    <h1>居家服務滿意度調查問卷</h1>
   </header>
 
-  <!-- 請把下面兩處「1FAIpQLSeOy4BMEZt93sQ9ZUxl3DLUFGkuQiBLDQSzsQFwEnmsTn_biw」換成實際的表單網址 -->
   <iframe class="form-frame"
           src="https://docs.google.com/forms/d/e/1FAIpQLSeOy4BMEZt93sQ9ZUxl3DLUFGkuQiBLDQSzsQFwEnmsTn_biw/viewform?embedded=true"
           title="居家服務滿意度調查">
